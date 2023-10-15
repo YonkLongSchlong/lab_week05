@@ -8,6 +8,7 @@ import org.apache.catalina.User;
 @Entity
 @Table(name="address")
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class Address {
@@ -32,4 +33,9 @@ public class Address {
     @OneToOne(mappedBy = "address")
     private Candidate candidate;
 
+    @Override
+    public String toString() {
+        return number + ", " + street + ", " + city + ", " + zipCode + ", " + country;
+
+    }
 }

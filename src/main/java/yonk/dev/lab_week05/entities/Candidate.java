@@ -3,12 +3,14 @@ package yonk.dev.lab_week05.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
 @Table(name = "candidate")
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class Candidate {
@@ -22,8 +24,8 @@ public class Candidate {
     private String email;
     @Column(name = "phone")
     private String phone;
-    @Column(name = "dob",  columnDefinition = "date")
-    private LocalDateTime dob;
+    @Column(name = "dob")
+    private LocalDate dob;
 
     @OneToOne
     @JoinColumn(name = "address")
@@ -32,4 +34,15 @@ public class Candidate {
     @OneToMany(mappedBy = "candidate")
     private List<Experience> expList;
 
+    @Override
+    public String toString() {
+        return "Candidate{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", dob=" + dob +
+                ", address=" + address +
+                '}';
+    }
 }

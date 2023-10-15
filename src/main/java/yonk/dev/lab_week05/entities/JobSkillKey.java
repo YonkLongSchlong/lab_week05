@@ -10,6 +10,7 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode
 public class JobSkillKey implements Serializable {
 
     @Column(name = "job_id")
